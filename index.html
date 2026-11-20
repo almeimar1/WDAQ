@@ -16,13 +16,15 @@ html,body{overflow-x:hidden}
 .hero-grad{background:linear-gradient(160deg,#7C3AED 0%,#8B5CF6 35%,#A78BFA 70%,#C4B5FD 100%)}
 .card-top{background:linear-gradient(160deg,#F5EFE6,#EDE9FE,#DDD6FE)}
 input,textarea{font-family:'Amiri',serif!important}
+.sold-card{opacity:.6;filter:grayscale(.6)}
+.sold-badge{position:absolute;top:10px;right:10px;background:#EF4444;color:#fff;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:bold;z-index:2}
 </style>
 </head>
 <body class="bg-[#FDF8F0] pb-24">
 <div class="bg-[#4C1D95] text-white text-center py-2 px-3 text-[13px] font-bold">ودق - مقهى الشارع | نستقبلكم يومياً من الساعة 4 عصراً حتى 2:30 صباحاً 🌙 | بدون جلسات، قهوتك بحبٍ تصطحبها معك</div>
 <div class="bg-[#FDF8F0] sticky top-0 z-40 border-b border-[#EDE9FE]">
 <div class="max-w-[1100px] mx-auto px-3 py-3 flex items-center justify-center">
-<div class="flex items-center gap-2">
+<div id="secretLogo" class="flex items-center gap-2 cursor-pointer select-none">
 <div class="w-10 h-10 bg-[#EDE9FE] rounded-xl flex items-center justify-center text-[20px]">🧾</div>
 <div class="text-center leading-none"><p class="text-[24px] font-bold text-[#2E1065]">ودق</p><p class="text-[10px] tracking-widest text-gray-500">WADQ • STREET CAFE</p></div>
 <div class="w-10 h-10 bg-[#6D28D9] rounded-xl flex items-center justify-center text-[20px]">☕</div>
@@ -39,7 +41,7 @@ input,textarea{font-family:'Amiri',serif!important}
 <div class="max-w-[1100px] mx-auto px-3">
 <div id="page-home" class="page show">
 <div class="mt-3 hero-grad rounded-[28px] p-6 text-center text-white relative overflow-hidden">
-<span class="inline-block bg-white/20 px-5 py-2 rounded-full text-[13px] font-bold leading-[1.8]">☕ مقهى شارع &nbsp;•&nbsp; طلبات خارجية فقط &nbsp;•&nbsp; نستقبلكم من 4 عصراً 🌙</span>
+<span class="bg-white/25 backdrop-blur px-4 py-1.5 rounded-full text-[13px] font-bold">☕ مقهى شارع • طلبات خارجية فقط • نستقبلكم من 4 عصراً 🌙</span>
 <h1 class="text-[40px] md:text-[56px] leading-[1.15] font-bold mt-4">ودق<br>حيث تُروى<br>حكاية القهوة</h1>
 <p class="text-white/90 text-[16px] md:text-[18px] leading-[1.9] mt-3 max-w-[600px] mx-auto">رشفة فاخرة وحكاية تبدأ من أول فنجان،<br>قهوتنا ترويها لك بكل حب، لتصطحبها معك وتكمل يومك بذوقٍ راقٍ.</p>
 <div class="flex gap-2 justify-center mt-5 max-w-[500px] mx-auto">
@@ -73,7 +75,7 @@ input,textarea{font-family:'Amiri',serif!important}
 </div>
 </div>
 <h2 class="text-[26px] font-bold text-center text-[#2E1065] mt-6">الأكثر طلباً 🔥</h2>
-<div id="bestGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-3"></div>
+<div id="bestGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-3"></div>
 <div class="mt-6 hero-grad rounded-[28px] p-6 text-center text-white">
 <h3 class="text-[26px] font-bold">جاهز لقهوتك القادمة؟</h3>
 <p class="text-white/90 mt-1">اختر طلبك، واصطحبه معك، دون انتظار طويل.</p>
@@ -94,7 +96,7 @@ input,textarea{font-family:'Amiri',serif!important}
 <button onclick="showCat('cold',this)" class="cat-pill whitespace-nowrap bg-white border px-5 py-2.5 rounded-full text-[15px] font-bold">🧊 باردة</button>
 <button onclick="showCat('sweet',this)" class="cat-pill whitespace-nowrap bg-white border px-5 py-2.5 rounded-full text-[15px] font-bold">🍰 حلويات</button>
 </div>
-<div id="menuGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-4"></div>
+<div id="menuGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-4"></div>
 </div>
 </div>
 <div id="page-order" class="page">
@@ -128,7 +130,7 @@ input,textarea{font-family:'Amiri',serif!important}
 </div>
 <div class="bg-white rounded-[22px] border border-[#EDE9FE] p-5 mt-3">
 <p class="font-bold text-[18px]">📍 موقعنا - WADQ Street Cafe</p>
-<p class="text-[14px] text-gray-500 mt-1">الحضور مقابل النهدي</p>
+<p class="text-[14px] text-gray-500 mt-1">الحضرور مقابل النهدي</p>
 <a href="https://maps.google.com/?q=16.538935,42.863037" target="_blank" class="block text-center bg-[#6D28D9] text-white py-3 rounded-full font-bold mt-3">افتح الخريطة ←</a>
 </div>
 <div class="bg-white rounded-[22px] border border-[#EDE9FE] p-5 mt-3">
@@ -207,10 +209,36 @@ input,textarea{font-family:'Amiri',serif!important}
 <div class="bg-[#EDE9FE] rounded-full px-3 py-2 text-center text-[13px] font-bold text-[#4C1D95] mt-3">✓ يُحضَّر طازجاً عند الطلب • طلبات خارجية</div>
 <div class="flex justify-between items-center mt-4"><span class="font-bold">الكمية</span><div class="flex items-center gap-2"><button onclick="changeQty(-1)" class="w-9 h-9 bg-gray-100 rounded-full font-bold text-[20px]">-</button><span id="dQty" class="font-bold text-[18px] w-6 text-center">1</span><button onclick="changeQty(1)" class="w-9 h-9 bg-gray-100 rounded-full font-bold text-[20px]">+</button></div></div>
 <div class="flex justify-between bg-[#F5EFE6] rounded-xl p-3 mt-4"><span>الإجمالي</span><span id="dTotal" class="font-bold text-[#6D28D9]"></span></div>
-<button onclick="addFromDetail()" class="w-full bg-[#6D28D9] text-white py-3.5 rounded-full font-bold text-[17px] mt-4">تأكيد الطلب - أضف إلى السلة</button>
+<button id="detailAddBtn" onclick="addFromDetail()" class="w-full bg-[#6D28D9] text-white py-3.5 rounded-full font-bold text-[17px] mt-4">تأكيد الطلب - أضف إلى السلة</button>
 </div>
 </div>
 </div>
+
+<!-- لوحة تحكم مخفية -->
+<div id="adminModal" class="fixed inset-0 bg-black/70 hidden z-[100] flex items-start sm:items-center justify-center p-3 overflow-y-auto">
+<div class="bg-white w-full max-w-md rounded-[24px] p-5 my-4">
+<div class="flex justify-between items-center"><h3 class="font-bold text-[22px] text-[#2E1065]">إدارة ودق 🔒</h3><button onclick="closeAdmin()" class="w-8 h-8 bg-gray-100 rounded-full font-bold">×</button></div>
+<div id="adminLogin">
+<input id="adminPass" type="password" placeholder="اكتب كلمة السر..." class="w-full border border-[#EDE9FE] rounded-xl p-3 text-[16px] outline-none bg-[#FDF8F0] mt-3">
+<button onclick="checkAdminPass()" class="w-full bg-[#6D28D9] text-white py-3 rounded-full font-bold mt-3">دخول</button>
+</div>
+<div id="adminControls" style="display:none">
+<div class="flex gap-2 mt-3">
+<button onclick="showChangePass()" class="flex-1 bg-[#F5EFE6] py-2.5 rounded-full font-bold text-[14px]">تغيير كلمة السر 🔑</button>
+<button onclick="showAllAdmin()" class="flex-1 bg-[#EDE9FE] py-2.5 rounded-full font-bold text-[14px]">كل الأصناف</button>
+</div>
+<div id="changePassBox" style="display:none" class="bg-[#FDF8F0] border rounded-xl p-3 mt-3">
+<input id="newPass1" type="password" placeholder="كلمة السر الجديدة" class="w-full border rounded-xl p-3 outline-none mb-2">
+<input id="newPass2" type="password" placeholder="أعد كتابة كلمة السر الجديدة" class="w-full border rounded-xl p-3 outline-none">
+<button onclick="saveNewPass()" class="w-full bg-[#6D28D9] text-white py-2.5 rounded-full font-bold mt-2">حفظ كلمة السر الجديدة</button>
+</div>
+<input id="adminSearch" oninput="renderAdmin()" placeholder="ابحث عن صنف..." class="w-full border border-[#EDE9FE] rounded-xl p-3 text-[16px] outline-none bg-[#FDF8F0] mt-3">
+<div id="adminList" class="mt-3 max-h-[45vh] overflow-y-auto"></div>
+<button onclick="closeAdmin()" class="w-full bg-[#6D28D9] text-white py-3 rounded-full font-bold mt-4">حفظ وإغلاق ✅</button>
+</div>
+</div>
+</div>
+
 <script>
 const items=[
 {name:"إثيوبيا V60",price:15,priceText:"15 ر.س",cat:"hot",catName:"المشروبات الساخنة",img:"teaeth.jpg.jpg",desc:"بن إثيوبي فاخر، نكهة فواكه وزهور، تحضير V60 على الأصول."},
@@ -245,7 +273,7 @@ const items=[
 {name:"أمريكانو بارد",price:10,priceText:"10 ر.س",cat:"cold",catName:"المشروبات الباردة",img:"cold.jpg.jpg",desc:"أمريكانو على الثلج."},
 {name:"سبانيش لاتيه",price:15,priceText:"15 ر.س",cat:"cold",catName:"المشروبات الباردة",img:"spansh.jpg.jpg",desc:"سبانيش لاتيه بارد، الأكثر طلباً."},
 {name:"لاتيه بارد",price:13,priceText:"13 ر.س",cat:"cold",catName:"المشروبات الباردة",img:"coldlati.jpg.jpg",desc:"لاتيه بارد."},
-{name:"بيستاشو لاتيه بارد",price:16,priceText:"16 ر.س",cat:"cold",catName:"المشروبات الباردة",img:"coldlati.jpg.jpg",desc:"بيستاشو بارد."},
+{name:"بيستاشو لاتيه بارد",price:16,priceText:"16 ر.س",cat:"cold",catName:"المشروبات الباردة",img:"bist.jpg.jpg",desc:"بيستاشو بارد."},
 {name:"سبانيش ماتشا",price:16,priceText:"16 ر.س",cat:"cold",catName:"المشروبات الباردة",img:"spanshmatsha.jpg.jpg",desc:"ماتشا مع سبانيش."},
 {name:"كراميل بارد",price:15,priceText:"15 ر.س",cat:"cold",catName:"المشروبات الباردة",img:"cramilcold.jpg.jpg",desc:"كراميل بارد."},
 {name:"موهيتو أزرق",price:10,priceText:"10 ر.س",cat:"cold",catName:"المشروبات الباردة",img:"blu.jpg.jpg",desc:"موهيتو أزرق."},
@@ -269,19 +297,36 @@ const items=[
 {name:"تيراميسو",price:15,priceText:"15 ر.س",cat:"sweet",catName:"حلويات",img:"tiram.jpg.jpg",desc:"تيراميسو إيطالي."},
 {name:"إضافة صوص",price:2,priceText:"2 ر.س",cat:"sweet",catName:"حلويات",img:"sus.jpg.jpg",desc:"إضافة صوص لأي حلوى."}
 ];
+// --- إدارة ودق ---
+function getSold(){try{return JSON.parse(localStorage.getItem('wadq_sold')||'[]')}catch(e){return[]}}
+function getPrices(){try{return JSON.parse(localStorage.getItem('wadq_prices')||'{}')}catch(e){return{}}}
+function getPrice(i){let p=getPrices();return p[i]!=null?Number(p[i]):items[i].price}
+function getPriceText(i){return getPrice(i)+' ر.س'}
+function getPass(){return localStorage.getItem('wadq_pass')||'1234'}
+function isSold(i){return getSold().includes(i)}
 let currentCat='all',currentItem=null,cart={},dQty=1;
+let tapCount=0,tapTimer=null;
+document.getElementById('secretLogo').addEventListener('click',function(){tapCount++;clearTimeout(tapTimer);tapTimer=setTimeout(()=>tapCount=0,800);if(tapCount>=5){tapCount=0;document.getElementById('adminModal').classList.remove('hidden');document.getElementById('adminLogin').style.display='block';document.getElementById('adminControls').style.display='none';document.getElementById('adminPass').value='';}});
+function closeAdmin(){document.getElementById('adminModal').classList.add('hidden');}
+function checkAdminPass(){if(document.getElementById('adminPass').value===getPass()){document.getElementById('adminLogin').style.display='none';document.getElementById('adminControls').style.display='block';document.getElementById('changePassBox').style.display='none';renderAdmin();}else{alert('كلمة السر غلط');}}
+function showChangePass(){let b=document.getElementById('changePassBox');b.style.display=b.style.display==='none'?'block':'none';}
+function saveNewPass(){let a=document.getElementById('newPass1').value,b=document.getElementById('newPass2').value;if(!a){alert('اكتب كلمة السر الجديدة');return}if(a!==b){alert('كلمتا السر ما متطابقات');return}localStorage.setItem('wadq_pass',a);alert('اتغيرت ✅ من هسي الكلمة الجديدة هي الشغالة');document.getElementById('newPass1').value='';document.getElementById('newPass2').value='';document.getElementById('changePassBox').style.display='none';}
+function showAllAdmin(){document.getElementById('adminSearch').value='';renderAdmin();}
+function renderAdmin(){let q=(document.getElementById('adminSearch').value||'').toLowerCase();let list=document.getElementById('adminList');list.innerHTML='';items.forEach((it,i)=>{if(q&&!it.name.toLowerCase().includes(q))return;let sold=isSold(i);list.innerHTML+=`<div class="bg-[#FDF8F0] border rounded-xl p-3 mb-2"><div class="flex justify-between items-center"><p class="font-bold">${it.name}</p><button onclick="toggleSold(${i})" class="${sold?'bg-red-500':'bg-[#25D366]'} text-white px-4 py-2 rounded-full font-bold text-[13px] whitespace-nowrap">${sold?'غير متوفر ❌':'متوفر ✅'}</button></div><div class="flex items-center gap-2 mt-2"><span class="text-[13px] font-bold">السعر:</span><input type="number" value="${getPrice(i)}" onchange="changePrice(${i},this.value)" class="w-24 border rounded-lg p-2 text-center outline-none bg-white"><span class="text-[13px] text-gray-500">ر.س</span></div></div>`;});if(!list.innerHTML)list.innerHTML='<p class="text-center text-gray-500 py-4">ما في نتيجة</p>';}
+function changePrice(i,val){let p=getPrices();val=Number(val);if(!val||val<=0){alert('اكتب سعر صحيح');renderAdmin();return}p[i]=val;localStorage.setItem('wadq_prices',JSON.stringify(p));render();}
+function toggleSold(i){let sold=getSold();if(sold.includes(i)){sold=sold.filter(x=>x!==i)}else{sold.push(i)}localStorage.setItem('wadq_sold',JSON.stringify(sold));renderAdmin();render();}
 function go(page,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));document.getElementById('page-'+page).classList.add('show');document.querySelectorAll('.nav-pill').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
-function cardHTML(it,i){return `<div class="bg-white rounded-[22px] overflow-hidden border border-[#EDE9FE] shadow-sm flex flex-col"><div onclick='openDetail(${i})' class="cursor-pointer card-top p-4 text-center flex-1"><span class="inline-block bg-white px-2 py-0.5 rounded-full text-[11px]">✦ ودق</span><img src="${it.img}" onerror="this.src='bage.jpg.jpg'" class="w-24 h-24 object-cover rounded-full mx-auto border-4 border-white shadow mt-2"><p class="font-bold text-[17px] text-[#2E1065] mt-2 leading-tight">${it.name}</p><p class="text-[13px] text-gray-500 mt-1 leading-[1.6]">${it.desc}</p></div><div class="p-3 flex justify-between items-center border-t border-[#F5EFE6] bg-white"><span class="font-bold text-[17px] text-[#2E1065]">${it.priceText}</span><button onclick="openDetail(${i})" class="bg-[#6D28D9] text-white px-5 py-2 rounded-full text-[14px] font-bold">اطلب</button></div></div>`;}
+function cardHTML(it,i){let sold=isSold(i);return `<div class="relative bg-white rounded-[22px] overflow-hidden border border-[#EDE9FE] shadow-sm flex flex-col ${sold?'sold-card':''}">${sold?'<span class="sold-badge">غير متوفر</span>':''}<div onclick='openDetail(${i})' class="cursor-pointer card-top p-4 text-center flex-1"><span class="inline-block bg-white px-2 py-0.5 rounded-full text-[11px]">✦ ودق</span><img src="${it.img}" onerror="this.src='bage.jpg.jpg'" class="w-24 h-24 object-cover rounded-full mx-auto border-4 border-white shadow mt-2"><p class="font-bold text-[17px] text-[#2E1065] mt-2 leading-tight">${it.name}</p><p class="text-[13px] text-gray-500 mt-1 leading-[1.6]">${it.desc}</p></div><div class="p-3 flex justify-between items-center border-t border-[#F5EFE6] bg-white"><span class="font-bold text-[17px] text-[#2E1065]">${getPriceText(i)}</span>${sold?'<span class="bg-gray-300 text-gray-600 px-5 py-2 rounded-full text-[14px] font-bold">غير متوفر</span>':'<button onclick="openDetail('+i+')" class="bg-[#6D28D9] text-white px-5 py-2 rounded-full text-[14px] font-bold">اطلب</button>'}</div></div>`;}
 function render(){let q=document.getElementById('searchInput').value.toLowerCase();let grid=document.getElementById('menuGrid');grid.innerHTML='';items.forEach((it,i)=>{if(currentCat!='all'&&it.cat!=currentCat)return;if(q&&!it.name.toLowerCase().includes(q))return;grid.innerHTML+=cardHTML(it,i);});let best=[30,0,44,45];let bg=document.getElementById('bestGrid');bg.innerHTML='';best.forEach(i=>{bg.innerHTML+=cardHTML(items[i],i);});}
 function showCat(c,btn){currentCat=c;document.querySelectorAll('.cat-pill').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();}
 function filterItems(){render();}
-function openDetail(i){currentItem=i;dQty=1;let it=items[i];document.getElementById('dImg').src=it.img;document.getElementById('dName').innerText=it.name;document.getElementById('dCat').innerText=it.catName;document.getElementById('dDesc').innerText=it.desc;document.getElementById('dPrice').innerText=it.priceText;document.getElementById('dQty').innerText=dQty;document.getElementById('dTotal').innerText=(it.price*dQty)+' ر.س';document.getElementById('detailModal').classList.remove('hidden');}
+function openDetail(i){currentItem=i;dQty=1;let it=items[i];document.getElementById('dImg').src=it.img;document.getElementById('dName').innerText=it.name;document.getElementById('dCat').innerText=it.catName;document.getElementById('dDesc').innerText=it.desc;document.getElementById('dPrice').innerText=getPriceText(i);document.getElementById('dQty').innerText=dQty;document.getElementById('dTotal').innerText=(getPrice(i)*dQty)+' ر.س';let btn=document.getElementById('detailAddBtn');if(isSold(i)){btn.innerText='غير متوفر حالياً ❌';btn.disabled=true;btn.style.opacity='.5';}else{btn.innerText='تأكيد الطلب - أضف إلى السلة';btn.disabled=false;btn.style.opacity='1';}document.getElementById('detailModal').classList.remove('hidden');}
 function closeDetail(){document.getElementById('detailModal').classList.add('hidden');}
-function changeQty(d){dQty=Math.max(1,dQty+d);document.getElementById('dQty').innerText=dQty;document.getElementById('dTotal').innerText=(items[currentItem].price*dQty)+' ر.س';}
-function addFromDetail(){cart[currentItem]=(cart[currentItem]||0)+dQty;updateCart();closeDetail();}
-function updateCart(){let box=document.getElementById('cartBox');let total=0,count=0;box.innerHTML='';if(Object.keys(cart).length==0){box.innerHTML='<div class="text-center py-6"><p class="text-[30px]">🛒</p><p class="font-bold">سلتك فارغة الآن</p><p class="text-[13px] text-gray-500">اختر من القائمة وابدأ طلبك</p></div>';}for(let i in cart){let it=items[i],qty=cart[i],sub=it.price*qty;total+=sub;count+=qty;box.innerHTML+=`<div class="flex justify-between items-center border-b py-3"><div class="flex gap-2 items-center"><img src="${it.img}" onerror="this.src='bage.jpg.jpg'" class="w-12 h-12 object-cover rounded-full"><div><p class="font-bold">${it.name}</p><p class="text-[13px] text-gray-500">${it.priceText} × ${qty} = ${sub} ر.س</p></div></div><div class="flex gap-1 items-center"><button onclick="cart[${i}]--;if(cart[${i}]<=0)delete cart[${i}];updateCart()" class="w-8 h-8 bg-gray-100 rounded-full font-bold">-</button><span class="w-5 text-center font-bold">${qty}</span><button onclick="cart[${i}]++;updateCart()" class="w-8 h-8 bg-[#6D28D9] text-white rounded-full font-bold">+</button><button onclick="delete cart[${i}];updateCart()" class="w-8 h-8 bg-red-50 text-red-500 rounded-full font-bold">×</button></div></div>`;}document.getElementById('cartTotal').innerText=total+' ر.س';document.getElementById('cartCountFloat').innerText=count;document.getElementById('cartTotalFloat').innerText=total+' ر.س';}
+function changeQty(d){dQty=Math.max(1,dQty+d);document.getElementById('dQty').innerText=dQty;document.getElementById('dTotal').innerText=(getPrice(currentItem)*dQty)+' ر.س';}
+function addFromDetail(){if(isSold(currentItem)){alert('الصنف دا غير متوفر حالياً');return}cart[currentItem]=(cart[currentItem]||0)+dQty;updateCart();closeDetail();go('order',null);}
+function updateCart(){let box=document.getElementById('cartBox');let total=0,count=0;box.innerHTML='';if(Object.keys(cart).length==0){box.innerHTML='<div class="text-center py-6"><p class="text-[30px]">🛒</p><p class="font-bold">سلتك فارغة الآن</p><p class="text-[13px] text-gray-500">اختر من القائمة وابدأ طلبك</p></div>';}for(let i in cart){let it=items[i],qty=cart[i],sub=getPrice(i)*qty;total+=sub;count+=qty;box.innerHTML+=`<div class="flex justify-between items-center border-b py-3"><div class="flex gap-2 items-center"><img src="${it.img}" onerror="this.src='bage.jpg.jpg'" class="w-12 h-12 object-cover rounded-full"><div><p class="font-bold">${it.name}</p><p class="text-[13px] text-gray-500">${getPriceText(i)} × ${qty} = ${sub} ر.س</p></div></div><div class="flex gap-1 items-center"><button onclick="cart[${i}]--;if(cart[${i}]<=0)delete cart[${i}];updateCart()" class="w-8 h-8 bg-gray-100 rounded-full font-bold">-</button><span class="w-5 text-center font-bold">${qty}</span><button onclick="cart[${i}]++;updateCart()" class="w-8 h-8 bg-[#6D28D9] text-white rounded-full font-bold">+</button></div></div>`;}document.getElementById('cartTotal').innerText=total+' ر.س';document.getElementById('cartCountFloat').innerText=count;document.getElementById('cartTotalFloat').innerText=total+' ر.س';}
 function clearCart(){cart={};updateCart();}
-function sendOrder(){if(Object.keys(cart).length==0){alert('السلة فارغة! اختر صنفاً أولاً');go('menu',null);return;}let name=document.getElementById('custName').value||'زبون ودق';let note=document.getElementById('custNote').value;let msg=`أهلاً ودق ☕%0Aطلب جديد من: ${name}%0A----------------%0A`;let total=0;for(let i in cart){let it=items[i],qty=cart[i];total+=it.price*qty;msg+=`${it.name} × ${qty} = ${it.price*qty} ر.س%0A`;}msg+=`----------------%0Aالمجموع: ${total} ر.س`;if(note)msg+=`%0Aملاحظة: ${note}`;window.open(`https://wa.me/966500757180?text=${msg}`,'_blank');}
+function sendOrder(){if(Object.keys(cart).length==0){alert('السلة فارغة! اختر صنفاً أولاً');go('menu',null);return;}let name=document.getElementById('custName').value||'زبون ودق';let note=document.getElementById('custNote').value;let msg=`أهلاً ودق ☕%0Aطلب جديد من: ${name}%0A----------------%0A`;let total=0;for(let i in cart){let it=items[i],qty=cart[i];total+=getPrice(i)*qty;msg+=`${it.name} × ${qty} = ${getPrice(i)*qty} ر.س%0A`;}msg+=`----------------%0Aالمجموع: ${total} ر.س`;if(note)msg+=`%0Aملاحظة: ${note}`;window.open(`https://wa.me/966500757180?text=${msg}`,'_blank');}
 render();updateCart();
 </script>
 </body>
